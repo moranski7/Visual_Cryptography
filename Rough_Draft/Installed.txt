@@ -1,0 +1,1 @@
+sudo apt install imagemagick-6.q16
