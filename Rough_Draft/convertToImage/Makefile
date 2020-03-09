@@ -1,3 +1,2 @@
 clean:
-	rm -f ./useBash/test.bmp
-	
+	rm -f ./useBash/test.bmp ./usePython/test.bmp ./usePython/*.log
