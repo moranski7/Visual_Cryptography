@@ -22,22 +22,22 @@ if __name__ == "__main__":
 
 	#check for command line arguments
 	if (len(sys.argv) == 1):
-		print ("Usage: ./convertPython.py filename", file=sys.stderr)
+		print ("Usage: ./convertPython.py filename")
 		exit(1)
 	elif (len(sys.argv) > 2):
-		print ("Too many arguments", file=sys.stderr)
+		print ("Too many arguments")
 		exit(1)
 
 	#Check to make sure file exist
 	try:
 		f = open (sys.argv[1], "r")
 	except IOError:
-		print ("File not accessible", file=sys.stderr)
+		print ("File not accessible")
 		exit(1)
 
 	#Check to make sure file is not empty.
 	if os.stat(sys.argv[1]).st_size == 0:
-		print ("File is empty", file=sys.stderr)
+		print ("File is empty")
 		exit (1)
 
 	#Check to make sure line read is not empty.
@@ -49,7 +49,7 @@ if __name__ == "__main__":
 	#Set up image objects and create image.
 	img = Image.new ('RGB', (380,70), color='white')
 	draw = ImageDraw.Draw (img)
-	font = ImageFont.truetype("roman_font_7.ttf", 60)
+	font = ImageFont.truetype("POMCRG__.TTF", 60)
 	logging.info ("Line from file is %s", pswd)
 
 	#Add text to file
