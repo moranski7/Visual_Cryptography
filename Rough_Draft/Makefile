@@ -1,7 +1,10 @@
 ALL: 	pswd \
 		moveFile \
 		convertImage \
-		moveImage
+		moveImage \
+		makeVisualCrypt \
+		moveCrypt \
+		sendImage
 
 pswd: 
 	cd createPswd/ && \
@@ -17,10 +20,23 @@ convertImage:
 	cat "p5wd.txt"
 
 moveImage:
-	mv ./convertToImage/usePython/test.bmp ./visualCrypt/
+	mv ./convertToImage/usePython/test.bmp ./visualCrypt/ 
+
+makeVisualCrypt:
+	cd visualCrypt && \
+	./createVisualCrypt.py test.bmp && \
+	rm -f test.bmp
+
+moveCrypt:
+	mv ./visualCrypt/out1.png ./emailImage/ && \
+	mv ./visualCrypt/out2.png ./emailImage/
+
+sendImage:
+	cd emailImage
 
 clean: cleanOne \
-	   cleanTwo
+	   cleanTwo \
+	   cleanThree
 
 cleanOne:
 	cd createPswd/ && \
@@ -30,3 +46,6 @@ cleanTwo:
 	cd convertToImage/ && \
 	make clean && \
 	rm -f p5wd.txt
+
+cleanThree:
+	rm -f ./visualCrypt/decryptedPswd.png ./emailImage/out1.png /emailImage/out2.png
