@@ -32,7 +32,8 @@ moveCrypt:
 	mv ./visualCrypt/out2.png ./emailImage/
 
 sendImage:
-	cd emailImage
+	cd emailImage && \
+	./sendImage.py out2.png Michael.Oranski@gmail.com
 
 clean: cleanOne \
 	   cleanTwo \
@@ -48,4 +49,4 @@ cleanTwo:
 	rm -f p5wd.txt
 
 cleanThree:
-	rm -f ./visualCrypt/decryptedPswd.png ./emailImage/out1.png /emailImage/out2.png
+	rm -f ./visualCrypt/decryptedPswd.png ./emailImage/out1.png ./emailImage/out2.png
