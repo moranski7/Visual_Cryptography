@@ -13,6 +13,7 @@ def main ():
 
 	tableOne = "CREATE TABLE IF NOT EXISTS voters"\
 	"(UserName VARCHAR (255) UNIQUE NOT NULL,"\
+	"Password VARCHAR (20) NOT NULL,"\
 	"FirstName VARCHAR (255) NOT NULL,"\
 	"LastName VARCHAR (255) NOT NULL,"\
 	"DOB DATE,"\

@@ -12,7 +12,6 @@ def main ():
 	)
 	cursor = mydb.cursor()
 
-	print ("len: ", len(sys.argv))
 	#check to make sure the commandline arguments are okay.
 	if (len (sys.argv) < 4) or (len(sys.argv) > 5):
 		print ("Usage: ./AddElections.py Name StartDate EndDate (Optional)Description", file=sys.stderr)
