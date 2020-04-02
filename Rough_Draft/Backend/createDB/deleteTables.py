@@ -11,9 +11,10 @@ def main ():
 		)
 	cursor = mydb.cursor()
 
+	cursor. execute ("DROP TABLE IF EXISTS voterShares");
 	cursor. execute ("DROP TABLE IF EXISTS voters");
 	cursor. execute ("DROP TABLE IF EXISTS elections");
-	cursor. execute ("DROP TABLE IF EXISTS voterShares");
+	
 
 if __name__ == '__main__':
 	main()

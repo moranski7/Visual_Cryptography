@@ -12,7 +12,7 @@ def main ():
 	cursor = mydb.cursor()
 
 	tableOne = "CREATE TABLE IF NOT EXISTS voters"\
-	"(UserName VARCHAR (255) NOT NULL,"\
+	"(UserName VARCHAR (255) UNIQUE NOT NULL,"\
 	"FirstName VARCHAR (255) NOT NULL,"\
 	"LastName VARCHAR (255) NOT NULL,"\
 	"DOB DATE,"\
@@ -21,7 +21,7 @@ def main ():
 	"VoterID INT AUTO_INCREMENT PRIMARY KEY)"
 
 	tableTwo = "CREATE TABLE IF NOT EXISTS elections"\
-	"(Name VARCHAR (510) NOT NULL,"\
+	"(Name VARCHAR (550) UNIQUE NOT NULL,"\
 	"StartDate DATE NOT NULL,"\
 	"EndDate DATE NOT NULL,"\
 	"Description TEXT(100000),"\
@@ -45,8 +45,9 @@ def main ():
 	for x in cursor:
 		print (x)
 
-#	cursor. execute ("DROP TABLE IF EXISTS voters");
-#	cursor. execute ("DROP TABLE IF EXISTS voterShares");
+#	cursor. execute ("DROP TABLE IF EXISTS voterShares")
+#	cursor. execute ("DROP TABLE IF EXISTS voters")
+#	cursor. execute ("DROP TABLE IF EXISTS elections")
 
 
 if __name__ == '__main__':
