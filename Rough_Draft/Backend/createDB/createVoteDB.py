@@ -9,10 +9,9 @@ mydb = mysql.connector.connect (
 	)
 
 mycursor = mydb.cursor()
-mycursor.execute ("CREATE DATABASE IF NOT EXISTS myDataBase")
+mycursor.execute ("CREATE DATABASE IF NOT EXISTS VoteDatabase")
 
 mycursor.execute ("SHOW DATABASES")
-print (mydb)
 
 for x in mycursor:
 	print (x)
