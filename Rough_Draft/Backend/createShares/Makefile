@@ -1,39 +1,53 @@
-ALL: 	pswd \
+ALL: 	getInfo \
+		moveBlankFile \
+		pswd \
 		moveFile \
 		convertImage \
 		moveImage \
 		makeVisualCrypt \
 		moveCrypt \
-		sendImage
+		sendImage \
+		moveImgToStorage \
+
+getInfo:
+	cd getUserInfo/ && \
+	make
+
+moveBlankFile:
+	mv ./getUserInfo/*.txt ./createPswd/
 
 pswd: 
 	cd createPswd/ && \
 	make && \
-	./createPswd
+	./createPswd *.txt
 
 moveFile:
-	mv ./createPswd/p5wd.txt ./convertToImage/usePython
+	mv ./createPswd/*.txt ./convertToImage/usePython
 
 convertImage:
 	cd convertToImage/usePython && \
-	python convertPython.py p5wd.txt && \
-	cat "p5wd.txt"
+	python convertPython.py *.txt && \
+	cat *.txt
 
 moveImage:
-	mv ./convertToImage/usePython/test.bmp ./visualCrypt/ 
+	mv ./convertToImage/usePython/*.bmp ./visualCrypt/ 
 
 makeVisualCrypt:
 	cd visualCrypt && \
-	./createVisualCrypt.py test.bmp && \
-	rm -f test.bmp
+	./createVisualCrypt.py *.bmp && \
+	rm -f *.bmp
 
 moveCrypt:
-	mv ./visualCrypt/out1.png ./emailImage/ && \
-	mv ./visualCrypt/out2.png ./emailImage/
+	mv ./visualCrypt/*out1.png ./emailImage/ && \
+	mv ./visualCrypt/*out2.png ./emailImage/
 
 sendImage:
 	cd emailImage && \
-	./sendImage.py out2.png Michael.Oranski@gmail.com
+	./sendImage.py *out2.png jw666 && \
+	rm -f *out2.png
+
+moveImgToStorage:
+	mv ./emailImage/*out1.png ./storeImage/
 
 clean: cleanOne \
 	   cleanTwo \
@@ -46,7 +60,7 @@ cleanOne:
 cleanTwo:
 	cd convertToImage/ && \
 	make clean && \
-	rm -f p5wd.txt
+	rm -f *.txt
 
 cleanThree:
-	rm -f ./visualCrypt/decryptedPswd.png ./emailImage/out1.png ./emailImage/out2.png
+	rm -f ./visualCrypt/decryptedPswd.png ./storeImage/*out1.png ./emailImage/*out2.png

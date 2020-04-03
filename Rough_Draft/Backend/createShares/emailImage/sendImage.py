@@ -10,6 +10,7 @@ from email.mime.image import MIMEImage
 import oauth2client
 from oauth2client import client, tools, file
 from apiclient import errors, discovery
+import mysql.connector
 import httplib2
 import base64
 import sys
@@ -112,15 +113,34 @@ def SendMessage(sender, to, subject, msgHtml, msgPlain, attachFile):
 
 	return result
 
+def getEmail (userName):
+    mydb = mysql.connector.connect (
+        host="localhost",
+        user="Michael Oranski",
+        password="Password@2",
+        database='VoteDatabase',
+        auth_plugin='mysql_native_password'
+    )
+    cursor = mydb.cursor()
+
+    sql = "SELECT Email FROM voters WHERE UserName = %s"
+    val = (userName, )
+    cursor. execute (sql, val)
+
+    result = cursor. fetchall ()
+    voterEmail = result[0][0]
+
+    return voterEmail
+
 def main ():
 	if (len(sys.argv) < 3):
 		print ("Not enough arguments!")
-		print ("Usage: ./sendImage.py imageFile target_email")
+		print ("Usage: ./sendImage.py imageFile userName")
 		exit (1)
 
 	elif (len (sys.argv) > 3):
 		print ("Too many arguments!")
-		print ("Usage: ./sendImage.py imageFile target_email")
+		print ("Usage: ./sendImage.py imageFile userName")
 		exit (1)
 
 	#Make sure first argument is a picture file.
@@ -129,7 +149,7 @@ def main ():
 		exit (1)
 
 	#Email contents
-	to = sys.argv[2]
+	to = getEmail (sys.argv[2])
 	sender = "Michael.Oranski@gmail.com"
 	subject = "Sending Share Test"
 	msgHtml = "Hi<br/>Here is the share for the pswd."

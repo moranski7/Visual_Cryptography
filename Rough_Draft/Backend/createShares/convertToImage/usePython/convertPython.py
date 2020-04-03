@@ -57,8 +57,12 @@ if __name__ == "__main__":
 	draw.text((30,15), pswd, (0,0,0), font=font)
 	logging.info ("Finished adding...")
 
+	#Get image file name
+	fileName = sys.argv[1]
+	imgFileName = fileName.split('.')[0] + ".bmp"
+
 	#Save image.
 	logging.info ("Saving image...")
-	img.save ('test.bmp')
+	img.save (imgFileName)
 	logging.info ("Exit...")
 	exit (0)

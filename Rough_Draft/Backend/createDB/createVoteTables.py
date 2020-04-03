@@ -13,6 +13,7 @@ def main ():
 
 	tableOne = "CREATE TABLE IF NOT EXISTS voters"\
 	"(UserName VARCHAR (255) UNIQUE NOT NULL,"\
+	"Email VARCHAR (510) NOT NULL,"\
 	"Password VARCHAR (20) NOT NULL,"\
 	"FirstName VARCHAR (255) NOT NULL,"\
 	"LastName VARCHAR (255) NOT NULL,"\
@@ -29,7 +30,8 @@ def main ():
 	"ElectID INT AUTO_INCREMENT PRIMARY KEY)"
 
 	tableThree = "CREATE TABLE IF NOT EXISTS voterShares ("\
-	"Img MEDIUMBLOB NOT NULL,"\
+	"ImgLoc MEDIUMTEXT NOT NULL,"\
+	"ImgName VARCHAR (510) UNIQUE NOT NULL,"\
 	"ElectStart DATE NOT NULL,"\
 	"ElectEnd DATE NOT NULL,"\
 	"Elect_ID INT NOT NULL,"\

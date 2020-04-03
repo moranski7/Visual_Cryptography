@@ -40,7 +40,7 @@ void main (string[] args) {
 	string pswd = genPswd (length); // Generate a password of 
 	
 	//Store in file.
-	File fl = File ("p5wd.txt", "w");
+	File fl = File (args[1], "w");
 	fl.writeln (pswd);
 	fl.close();
 
@@ -49,13 +49,14 @@ void main (string[] args) {
 
 void checkArg (string[] args, ref int length) {
 	
-	// If no command line argument provided, default to password length of 7.
-	if (args.length == 1)
+
+	// If only one command line argument provided, default to password length of 7.
+	if (args.length == 2)
 		length = 7;
 	// If argument provided, check to see if it is a number and within range.
-	else if (args.length == 2) {
-		if (isNumeric(args[1])){
-			length = to!int(args[1]); // converts argument to an integer.
+	else if (args.length == 3) {
+		if (isNumeric(args[2])){
+			length = to!int(args[2]); // converts argument to an integer.
 			if (length < 6) {
 				stderr.writeln ("Length must be greater or equal to 6 characters long.");
 				exit (1);
@@ -72,7 +73,7 @@ void checkArg (string[] args, ref int length) {
 	}
 	//User provided too many command line arguments.
 	else {
-		stderr.writeln ("Usage: ./createPswd [optional] #");
+		stderr.writeln ("Usage: ./createPswd fileName [optional] #");
 		exit (1);
 	}
 }

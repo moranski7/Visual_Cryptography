@@ -141,10 +141,14 @@ for x in range (0,image.size[0]):
 			addMatchPair (outfile1, x*4, y*4)
 			addMatchPair (outfile2, x*4, y*4)
 
+#Make the new file names
+fileOne = (sys.argv[1]).split('.')[0] + "out1.png"
+fileTwo = (sys.argv[1]).split('.')[0] + "out2.png"
+
 outfile1 =  outfile1.convert("RGBA")
 outfile2 = outfile2.convert("RGBA")
-outfile1.save('out1.png')
-outfile2.save('out2.png')
+outfile1.save(fileOne)
+outfile2.save(fileTwo)
 
 #Test to make sure file cam be decrypted.
 new_img = Image.blend(outfile1, outfile2, 0.4)
