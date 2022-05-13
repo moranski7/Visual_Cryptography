@@ -23,6 +23,7 @@
 				<li>PIL (python image)</li>
 				<li>imagemagick (bash image)</li>
 				<li>gdc compiler for dlang</li>
+				<li>make</li>
 			</ul>
 		</div>
 		<div>
