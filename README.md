@@ -20,7 +20,7 @@
 			<p>Please make sure the following are installed:</p>
 			<ul>
 				<li>python3</li>
-				<li>pillow (python image)</li>
+				<li>PIL (python image)</li>
 				<li>imagemagick (bash image)</li>
 				<li>gdc compiler for dlang</li>
 			</ul>
