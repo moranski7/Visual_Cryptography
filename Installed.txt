@@ -1,0 +1,21 @@
+for bash
+sudo apt install imagemagick-6.q16
+
+for python
+#jpeg support
+sudo apt-get install libjpeg-dev
+#tiff support
+sudo apt-get install libtiff-dev
+#freetype support
+sudo apt-get install libfreetype6-dev
+#openjpeg200support (needed to compile from source)
+wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz
+tar xzvf openjpeg-2.0.1.tar.gz
+cd openjpeg-2.0.1/
+sudo apt-get install cmake
+cmake .
+sudo make install
+#install pillow
+pip install pillow
+#install compiler for dlang
+sudo apt install gdc
