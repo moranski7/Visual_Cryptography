@@ -2,7 +2,8 @@ ALL: 	pswd \
 		moveFile \
 		convertImage \
 		moveImage \
-		makeVisualCrypt
+		makeVisualCrypt \
+		moveShares
 
 pswd:
 	cd createPswd/ && \
@@ -25,9 +26,13 @@ makeVisualCrypt:
 	./createVisualCrypt.py *.bmp && \
 	rm -f *.bmp
 
+moveShares:
+	mv ./visualCrypt/*.png ./
+
 clean: cleanOne \
 	   cleanTwo \
-	   cleanThree
+	   cleanThree \
+	   cleanFour
 
 cleanOne:
 	cd createPswd/ && \
@@ -40,3 +45,6 @@ cleanTwo:
 
 cleanThree:
 	rm -f ./visualCrypt/*.png
+
+cleanFour:
+	rm -f *.png
