@@ -17,5 +17,5 @@ cmake .
 sudo make install
 #install pillow
 pip install pillow
-
-for Julia
+#install compiler for dlang
+sudo apt install gdc
